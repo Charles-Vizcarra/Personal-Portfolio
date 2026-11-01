@@ -2,13 +2,15 @@
 
 :root {
   color-scheme: dark;
-  --background: #050816;
+  --background: #070511;
   --surface: #0b1026;
   --foreground: #f8fafc;
   --muted: #9aa8c3;
   --purple: #a78bfa;
   --blue: #67d4ff;
   --line: rgba(159, 177, 218, 0.15);
+  --pointer-x: 50vw;
+  --pointer-y: 32vh;
 }
 
 @theme inline {
@@ -29,29 +31,77 @@ html {
 }
 
 body {
+  isolation: isolate;
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(ellipse at 50% -18%, rgba(84, 55, 167, 0.2), transparent 42rem),
+    linear-gradient(180deg, rgba(7, 5, 17, 0.48), rgba(7, 5, 17, 0.58)),
+    url("/galaxy-nebula.png"),
+    radial-gradient(ellipse at 12% 15%, rgba(136, 60, 190, 0.19), transparent 36rem),
+    radial-gradient(ellipse at 78% 39%, rgba(88, 52, 164, 0.14), transparent 42rem),
+    linear-gradient(155deg, transparent 12%, rgba(109, 57, 155, 0.055) 33%, rgba(65, 50, 127, 0.08) 47%, transparent 69%),
     var(--background);
+  background-position:
+    center,
+    center 42%,
+    12% 15%,
+    78% 39%,
+    center,
+    center;
+  background-size:
+    auto,
+    cover,
+    auto,
+    auto,
+    auto,
+    auto;
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 body::before {
   position: fixed;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
   pointer-events: none;
   content: "";
-  opacity: 0.42;
+  opacity: 0.48;
   background-image:
     radial-gradient(1px 1px at 24px 36px, #fff 60%, transparent),
     radial-gradient(1px 1px at 145px 82px, #b9d8ff 60%, transparent),
     radial-gradient(1.5px 1.5px at 211px 155px, #fff 60%, transparent),
     radial-gradient(1px 1px at 330px 43px, #d6cbff 60%, transparent),
-    radial-gradient(1px 1px at 410px 190px, #fff 60%, transparent);
-  background-size: 460px 240px;
+    radial-gradient(1px 1px at 410px 190px, #fff 60%, transparent),
+    radial-gradient(1.5px 1.5px at 92px 204px, #d9b8ff 60%, transparent),
+    radial-gradient(1px 1px at 374px 128px, #d6cbff 60%, transparent);
+  background-size: 460px 240px, 460px 240px, 460px 240px, 460px 240px, 460px 240px, 460px 240px, 460px 240px;
+  animation: star-twinkle 8s ease-in-out infinite alternate;
+}
+
+body::after {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: radial-gradient(
+    360px circle at var(--pointer-x) var(--pointer-y),
+    rgba(162, 91, 255, 0.095),
+    rgba(107, 64, 190, 0.035) 36%,
+    transparent 72%
+  );
+}
+
+body > header {
+  position: fixed;
+  z-index: 50;
+}
+
+body > main,
+body > footer {
+  position: relative;
+  z-index: 1;
 }
 
 ::selection {
@@ -123,6 +173,20 @@ textarea:focus-visible {
   background: linear-gradient(145deg, rgba(20, 27, 55, 0.82), rgba(8, 12, 29, 0.8));
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
   backdrop-filter: blur(14px);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+}
+
+@media (hover: hover) {
+  .surface-card:hover {
+    border-color: rgba(184, 155, 255, 0.3);
+    box-shadow:
+      0 24px 80px rgba(0, 0, 0, 0.24),
+      0 0 34px rgba(139, 92, 246, 0.09);
+  }
 }
 
 .cosmic-button {
@@ -166,6 +230,19 @@ textarea:focus-visible {
 .quiet-button:hover {
   border-color: rgba(167, 139, 250, 0.55);
   background: rgba(36, 27, 72, 0.58);
+  box-shadow: 0 0 26px rgba(139, 92, 246, 0.12);
+}
+
+.scroll-progress {
+  position: fixed;
+  z-index: 60;
+  inset: 0 0 auto;
+  height: 2px;
+  background: linear-gradient(90deg, #a855f7, #c4b5fd 55%, #67d4ff);
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.72);
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
 }
 
 .hero-orbit {
@@ -319,7 +396,7 @@ textarea:focus-visible {
   text-transform: uppercase;
 }
 
-.timeline-line {
+.timeline-line::before {
   background: linear-gradient(to bottom, rgba(167, 139, 250, 0.8), rgba(56, 189, 248, 0.15), transparent);
 }
 
@@ -327,16 +404,29 @@ textarea:focus-visible {
   animation: star-drift 16s ease-in-out infinite alternate;
 }
 
-@keyframes star-drift {
+@keyframes star-twinkle {
   from {
-    transform: translate3d(-5px, -4px, 0);
+    opacity: 0.34;
   }
   to {
-    transform: translate3d(8px, 6px, 0);
+    opacity: 0.56;
+  }
+}
+
+@keyframes star-drift {
+  from {
+    translate: -5px -4px;
+  }
+  to {
+    translate: 8px 6px;
   }
 }
 
 @media (max-width: 640px) {
+  body {
+    background-attachment: scroll;
+  }
+
   .page-shell {
     width: min(100% - 2rem, 1120px);
   }

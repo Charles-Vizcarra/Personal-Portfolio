@@ -11,7 +11,6 @@ export const personal = {
   education: "BS Information Technology · 2023–Present",
   location: "Parañaque City, Philippines",
   email: "charlesjustinrvizcarra@gmail.com",
-  phone: "09762158152",
   socials: [
     {
       platform: "github",

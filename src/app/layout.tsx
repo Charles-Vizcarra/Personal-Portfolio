@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { MotionConfig } from "motion/react";
 import "./globals.css";
 import { personal } from "@/data/personal";
+import { CosmicEffects } from "@/components/layout/CosmicEffects";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,6 +58,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <MotionConfig reducedMotion="user">{children}</MotionConfig>
+        <CosmicEffects />
       </body>
     </html>
   );

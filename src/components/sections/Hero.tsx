@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight, Orbit, Sparkles } from "lucide-react";
 import { personal } from "@/data/personal";
@@ -10,19 +11,19 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[760px] scroll-mt-24 items-center overflow-hidden pb-20 pt-32 sm:min-h-[850px] sm:pt-36"
+      className="relative flex min-h-svh scroll-mt-24 items-center overflow-hidden pb-16 pt-24 sm:pb-16 sm:pt-28"
       aria-labelledby="hero-heading"
     >
       <div className="hero-glow" aria-hidden="true" />
       <div className="hero-orbit star-drift" aria-hidden="true" />
-      <div className="page-shell relative z-10 grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="page-shell relative z-10 grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="max-w-2xl"
         >
-          <div className="eyebrow mb-7">
+          <div className="eyebrow mb-5">
             <Sparkles size={14} aria-hidden="true" />
             A portfolio in orbit
           </div>
@@ -33,15 +34,15 @@ export function Hero() {
           >
             {personal.name}
           </h1>
-          <p className="mt-5 text-lg font-medium text-slate-200 sm:text-xl">
+          <p className="mt-4 text-lg font-medium text-slate-200 sm:text-xl">
             {personal.role}
           </p>
-          <p className="mt-5 max-w-xl text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">
+          <p className="mt-4 max-w-xl text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">
             {personal.introduction} I’m building this space one project at a
             time—come explore what’s taking shape.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Link className="cosmic-button" href="#projects">
               Explore projects <ArrowRight size={16} aria-hidden="true" />
             </Link>
@@ -50,7 +51,7 @@ export function Hero() {
             </Link>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-6">
             <SocialLinks />
           </div>
         </motion.div>
@@ -59,8 +60,8 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.12, ease: "easeOut" }}
-          className="relative mx-auto aspect-square w-full max-w-[500px]"
-          aria-label="Abstract orbital illustration"
+          className="relative mx-auto aspect-square w-full max-w-[440px]"
+          aria-label="A glowing purple planet surrounded by stars and orbital rings"
           role="img"
         >
           <div className="absolute inset-[7%] rounded-full border border-violet-200/10" />
@@ -68,9 +69,15 @@ export function Hero() {
           <div className="absolute inset-[27%] rounded-full border border-violet-200/10" />
           <div className="absolute inset-[16%] rounded-full border border-sky-100/20 [transform:rotate(-30deg)_scaleY(.38)]" />
           <div className="absolute inset-[5%] rounded-full border border-violet-100/15 [transform:rotate(32deg)_scaleY(.58)]" />
-          <div className="absolute inset-[23%] rounded-full bg-[radial-gradient(circle_at_34%_28%,rgba(180,157,255,.92),rgba(92,75,180,.82)_23%,rgba(28,38,86,.97)_55%,#090d20_74%)] shadow-[0_0_75px_rgba(131,105,255,.36),inset_-25px_-20px_50px_rgba(0,0,0,.7)]">
-            <div className="absolute inset-0 rounded-full bg-[linear-gradient(145deg,transparent_42%,rgba(83,188,255,.38)_54%,transparent_62%)]" />
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_68%_74%,rgba(55,141,220,.28),transparent_32%)]" />
+          <div className="absolute inset-[19%] overflow-hidden rounded-full border border-fuchsia-200/20 bg-[#090513] shadow-[0_0_75px_rgba(216,64,255,.32)]">
+            <Image
+              src="/purple-planet.png"
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 350px, 85vw"
+              className="scale-[1.3] object-cover object-[46%_51%]"
+            />
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_72%_46%,transparent_42%,rgba(5,3,14,.12)_76%,rgba(5,3,14,.4))]" />
           </div>
           <div className="absolute left-[13%] top-[23%] grid size-10 place-items-center rounded-full border border-violet-200/20 bg-[#11152d]/80 text-violet-100 shadow-[0_0_24px_rgba(147,111,255,.2)]">
             <Orbit size={18} aria-hidden="true" />

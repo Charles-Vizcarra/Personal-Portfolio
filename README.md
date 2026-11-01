@@ -3,8 +3,8 @@
 A responsive, galaxy-themed developer portfolio for Charles Justin R. Vizcarra,
 built with Next.js App Router, TypeScript, Tailwind CSS, Motion, and Lucide
 React. The site introduces the developer, presents project case-study pages,
-organizes skills and career milestones, and includes an email contact form that
-can be enabled with Resend.
+organizes skills and career milestones, and provides direct email and social
+contact links.
 
 Portfolio details are based on the provided resume. Project repository and
 demo links are only shown when an actual URL is available.
@@ -17,8 +17,7 @@ demo links are only shown when an actual URL is available.
 - About, skills, projects, journey, and contact sections.
 - Client-side project filters and statically generated project detail pages.
 - Centralized, typed portfolio content in `src/data/`.
-- Contact form with server-side validation, loading/success/error feedback, and
-  optional Resend delivery.
+- Direct email, phone, and social contact links; no backend is required.
 - Reduced-motion support, keyboard focus styles, semantic sections, and SEO
   metadata.
 - A custom orbital favicon and generated social-preview image.
@@ -31,14 +30,12 @@ demo links are only shown when an actual URL is available.
 - Tailwind CSS 4
 - Motion for React
 - Lucide React
-- Resend REST API (optional, for contact email delivery)
 
 ## Project structure
 
 ```text
 src/
   app/
-    api/contact/route.ts    Contact form endpoint
     projects/[slug]/       Project case-study routes
     globals.css            Theme and global styles
     layout.tsx             Root layout and metadata
@@ -46,7 +43,7 @@ src/
   components/
     layout/                 Navigation, footer, social links
     projects/               Project cards and artwork
-    sections/               Portfolio page sections and contact form
+    sections/               Portfolio page sections
   data/                     Editable personal, skill, project, and journey data
   types/                    Shared TypeScript types
 ```
@@ -68,28 +65,6 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000). To stop the development
 server, press `Ctrl+C` in the terminal.
 
-## Contact email setup
-
-The portfolio itself runs without email credentials. To deliver messages from
-the form:
-
-1. Create a Resend account and verify a sender domain.
-2. Copy `.env.example` to `.env.local`.
-3. Set `RESEND_API_KEY`, `CONTACT_EMAIL`, and `CONTACT_FROM_EMAIL` in
-   `.env.local`. The sender address must belong to a domain verified with
-   Resend.
-4. Restart the development server.
-
-In PowerShell, copy the example with:
-
-```powershell
-Copy-Item .env.example .env.local
-```
-
-Never commit `.env.local` or expose the Resend key in client-side code.
-Configure these same values in Vercel Project Settings → Environment Variables
-for production. Without these values, the contact API responds with an explicit
-configuration error instead of pretending that a message was delivered.
 For social-preview URLs, Vercel's deployment URL is used automatically. Set
 `NEXT_PUBLIC_SITE_URL` to your public custom domain when one is configured.
 
@@ -147,9 +122,8 @@ only if needed.
 2. Import the GitHub repository containing this project.
 3. Confirm that Vercel detects **Next.js**. The default build command and output
    settings are sufficient.
-4. If the contact form should send email, add the three Resend environment
-   variables under **Project Settings → Environment Variables**. They are
-   optional for building and deploying the site.
+4. Optionally set `NEXT_PUBLIC_SITE_URL` under **Project Settings → Environment
+   Variables** when using a custom domain.
 5. Select **Deploy**. Vercel will build and publish the site.
 6. Optionally add a custom domain under **Project Settings → Domains**.
 7. Future pushes to the connected branch trigger deployments automatically.
