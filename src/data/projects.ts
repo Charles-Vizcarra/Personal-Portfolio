@@ -100,10 +100,42 @@ export const projects: Project[] = [
       "A psychological horror visual novel with a branching narrative and game-state logic.",
     technologies: [],
     github: "",
-    demo: "",
+    demo: "https://sirdroffilc.itch.io/closedopen",
     featured: true,
     artwork: "visual-novel",
     image: "/images/projects/closed-open.png",
+    certificates: [
+      {
+        src: "/images/projects/closed-open-runner-up.jpg",
+        title: "2nd Place · TPG UNLOCK",
+        alt: "Second Place award for Worst Generation at TPG UNLOCK, listing Charles Justin R. Vizcarra as a team member.",
+      },
+      {
+        src: "/images/projects/closed-open-special-awards.jpg",
+        title: "Special Awards · Technical Achievement & Audience Choice",
+        alt: "Closed;Open award poster recognizing Technical Achievement and Audience Choice.",
+      },
+    ],
+    galleryTitle: "Inside Closed;Open",
+    galleryDescription:
+      "A few moments from our psychological horror visual novel, where unsettling scenes and branching choices shape the story.",
+    gallery: [
+      {
+        src: "/images/projects/closed-open-menu.png",
+        alt: "Closed;Open title screen with the protagonist and game menu",
+        caption: "The title screen introduces the story and its unsettling world.",
+      },
+      {
+        src: "/images/projects/closed-open-room.png",
+        alt: "A dim bedroom scene from Closed;Open with the protagonist and a message that the room is unfamiliar",
+        caption: "A quiet moment when the protagonist realizes something is wrong.",
+      },
+      {
+        src: "/images/projects/closed-open-hands.png",
+        alt: "Illustrated first-person scene showing hands against a dark wooden surface",
+        caption: "A first-person scene from the game's psychological horror story.",
+      },
+    ],
     overview:
       "A psychological horror visual novel developed for TPG UNLOCK at PUP Manila. Its branching narrative and game-state logic shape the player’s experience.",
     highlights: [
@@ -127,6 +159,28 @@ export const projects: Project[] = [
     featured: true,
     artwork: "design",
     image: "/images/projects/ecoality.png",
+    galleryTitle: "The idea and the people behind it",
+    galleryDescription:
+      "ECOAlity started with a simple hope: make caring for the planet feel rewarding in everyday life. These snapshots capture both the app concept and the team who brought it to the HAWK-A-THON.",
+    certificates: [
+      {
+        src: "/images/projects/ecoality-participation-certificate.png",
+        title: "Certificate of Participation · UI/UX HAWK-A-THON",
+        alt: "Certificate of participation awarded to Charles Justin Vizcarra for UI/UX design at the UI/UX Hawk-A-Thon: Designing the Future.",
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/projects/ecoality-concept.jpg",
+        alt: "ECOAlity HAWK-A-THON poster showing the app concept and its student team",
+        caption: "The ECOAlity concept: making everyday sustainability rewarding.",
+      },
+      {
+        src: "/images/projects/ecoality-team.jpg",
+        alt: "The ECOAlity team presenting their project at the UI/UX HAWK-A-THON",
+        caption: "The team sharing ECOAlity at the HAWK-A-THON.",
+      },
+    ],
     overview:
       "A design project presented at the TUP UI/UX HAWKATHON. The work included high-fidelity Figma prototypes, a project roadmap, and contributions to the final pitch.",
     highlights: [

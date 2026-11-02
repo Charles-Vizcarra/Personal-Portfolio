@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, CodeXml, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  CodeXml,
+  Sparkles,
+} from "lucide-react";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { ProjectArtwork } from "@/components/projects/ProjectArtwork";
@@ -97,7 +103,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   rel="noreferrer"
                   className="quiet-button"
                 >
-                  Live demo <ArrowUpRight size={16} aria-hidden="true" />
+                  {project.slug === "closed-open"
+                    ? "Download the game"
+                    : "Live demo"}{" "}
+                  <ArrowUpRight size={16} aria-hidden="true" />
                 </a>
               )}
             </div>
@@ -106,6 +115,45 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <ProjectArtwork project={project} large />
           </div>
         </div>
+
+        {project.gallery && (
+          <section className="mt-14" aria-labelledby="project-gallery-heading">
+            <div className="max-w-2xl">
+              <p className="eyebrow">A closer look</p>
+              <h2
+                id="project-gallery-heading"
+                className="gradient-text mt-3 text-3xl font-semibold tracking-[-0.05em] sm:text-4xl"
+              >
+                {project.galleryTitle ?? "A closer look"}
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
+                {project.galleryDescription ??
+                  "A few moments from the project, from early concepts to the finished experience."}
+              </p>
+            </div>
+            <div className="mt-7 grid gap-5 md:grid-cols-2">
+              {project.gallery.map((photo) => (
+                <figure
+                  key={photo.src}
+                  className="surface-card overflow-hidden rounded-3xl p-3"
+                >
+                  <div className="relative aspect-square overflow-hidden rounded-2xl bg-slate-950/60">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <figcaption className="px-2 pb-2 pt-4 text-sm leading-6 text-slate-300">
+                    {photo.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           <article className="surface-card rounded-3xl p-6 sm:p-8">
@@ -142,6 +190,24 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 : "Repository and live demo links were not listed in the resume."}
             </p>
           </article>
+          {project.certificates?.map((certificate) => (
+            <figure
+              key={certificate.src}
+              className="surface-card overflow-hidden rounded-3xl p-6 sm:p-8"
+            >
+              <figcaption className="eyebrow">
+                05 / {certificate.title}
+              </figcaption>
+              <Image
+                src={certificate.src}
+                alt={certificate.alt}
+                width={1684}
+                height={1190}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="mt-4 h-auto w-full rounded-2xl"
+              />
+            </figure>
+          ))}
         </div>
       </main>
       <Footer />

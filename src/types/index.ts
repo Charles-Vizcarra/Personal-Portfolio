@@ -28,6 +28,18 @@ export interface Project {
   technologies: string[];
   period?: string;
   image?: string;
+  certificates?: {
+    src: string;
+    title: string;
+    alt: string;
+  }[];
+  galleryTitle?: string;
+  galleryDescription?: string;
+  gallery?: {
+    src: string;
+    alt: string;
+    caption: string;
+  }[];
   github: string;
   demo: string;
   featured: boolean;

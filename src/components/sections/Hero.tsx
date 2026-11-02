@@ -3,11 +3,22 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, Orbit, Sparkles } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowRight,
+  Award,
+  Orbit,
+  Sparkles,
+} from "lucide-react";
 import { personal } from "@/data/personal";
+import { experienceEntries } from "@/data/experience";
 import { SocialLinks } from "@/components/layout/SocialLinks";
 
 export function Hero() {
+  const awardCount = experienceEntries.filter(
+    (entry) => entry.kind === "Award",
+  ).length;
+
   return (
     <section
       id="top"
@@ -54,6 +65,16 @@ export function Hero() {
           <div className="mt-6">
             <SocialLinks />
           </div>
+          {awardCount > 0 && (
+            <Link
+              href="#journey"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-amber-200/20 bg-amber-200/[0.06] px-3.5 py-2 text-sm text-amber-100 transition hover:border-amber-200/40 hover:bg-amber-200/[0.1]"
+              aria-label={`View ${awardCount} award milestones`}
+            >
+              <Award size={16} aria-hidden="true" />
+              {awardCount} award-winning projects
+            </Link>
+          )}
         </motion.div>
 
         <motion.div
