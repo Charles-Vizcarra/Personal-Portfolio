@@ -6,6 +6,8 @@ React. The site introduces the developer, presents project case-study pages,
 organizes skills and career milestones, and provides direct email and social
 contact links.
 
+**Live site:** [personal-portfolio-seven-xi-42.vercel.app](https://personal-portfolio-seven-xi-42.vercel.app/)
+
 Portfolio details are based on the provided resume. Project repository and
 demo links are only shown when an actual URL is available.
 
