@@ -65,7 +65,6 @@ export function Hero() {
           role="img"
         >
           <div className="absolute inset-[7%] rounded-full border border-violet-200/10" />
-          <div className="absolute inset-[17%] rounded-full border border-sky-200/10" />
           <div className="absolute inset-[27%] rounded-full border border-violet-200/10" />
           <div className="absolute inset-[16%] rounded-full border border-sky-100/20 [transform:rotate(-30deg)_scaleY(.38)]" />
           <div className="absolute inset-[5%] rounded-full border border-violet-100/15 [transform:rotate(32deg)_scaleY(.58)]" />
@@ -75,7 +74,7 @@ export function Hero() {
               alt=""
               fill
               sizes="(min-width: 1024px) 350px, 85vw"
-              className="scale-[1.3] object-cover object-[46%_51%]"
+              className="translate-x-[4.5%] translate-y-[1%] scale-[1.42] object-cover object-[46%_51%]"
             />
             <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_72%_46%,transparent_42%,rgba(5,3,14,.12)_76%,rgba(5,3,14,.4))]" />
           </div>
